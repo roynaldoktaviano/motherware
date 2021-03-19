@@ -1,0 +1,243 @@
+// Variabel 
+$darkGreen : hsl(182, 34%, 58%);
+$lightGreen : hsl(182, 42%, 53%);
+
+// Breakpoint
+// 640px, 1024px, 1400px 
+$breakpoints-up : ("medium": "40em", "large" : "64em", "xlarge" : "87.5em");
+
+//639px, 1023px, 1399px
+$breakpoints-down : ("small": "39.9375‬em", "medium" : "63.9375em", "large" : "87.4375em");
+
+@mixin breakpoint-up($size) {
+    @media (min-width : map-get($breakpoints-up , $size )){
+        @content;
+    }
+}
+
+@mixin breakpoint-down($size) {
+    @media (max-width : map-get($breakpoints-down , $size )){
+        @content;
+    }
+}
+
+// Global Setting
+html {
+    font-size: 100%;
+}
+
+*,*::before,*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1,h2,h3,h4,h5 {
+    margin: 0;
+}
+
+.container {
+    max-width: 69.5625rem;
+    margin: 0 auto;
+    
+    &-pt {
+        padding-top: 2.25rem;
+    }
+
+    &-pb {
+        padding-bottom: 2.25rem;
+    }
+
+    &-pr {
+        padding-right: 4.25rem;
+    }
+
+    &-pl {
+        padding-left: 4.25rem;
+    }
+
+    &-px {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+
+        @include breakpoint-up(medium) {
+            padding-left: 4.25rem;
+            padding-right: 4.25rem;
+        }
+    }
+
+    &-py {
+        padding-bottom: 0.9375rem;
+        padding-top: 0.9375rem;
+    }
+
+    &-pall {
+        padding-bottom: 0.9375rem;
+        padding-top: 0.9375rem;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+
+        @include breakpoint-up(large){
+            padding-bottom: 2.25rem;
+            padding-top: 2.25rem;
+            padding-left: 4.25rem;
+            padding-right: 4.25rem;
+        }
+    }
+}
+
+.for-desktop {
+    @include breakpoint-down(medium){
+        display: none;
+    }
+}
+
+.for-mobile {
+    @include breakpoint-up(large){
+        display: none;
+    }
+}
+
+// Header CSS
+.header {
+    &-content{
+        padding-top: 16px;
+        padding-bottom: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        img {
+            width: 150px;
+        }
+
+        .hamburger-icon {
+            span {
+                display: block;
+                background: $lightGreen;
+                width: 1.5em;
+                height: 3px;
+
+                &:not(:last-child){
+                    margin-bottom: 5px;
+                }
+            }
+        }
+    }
+
+    &-link {
+        a {
+            font-size: 14px;
+            color: $darkGreen;
+            margin-right: 12px;
+            transition: 0.2s ease-in-out;
+
+            &:hover {
+                font-weight: 700;
+                font-size: 15px;
+            }
+        }
+
+        .login {
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            color: $lightGreen;
+            font-weight: 700;
+            border: 2px solid $darkGreen;
+            background-color: white;
+            padding: 5px 20px;
+            margin-left: 10px;
+            font-size: 14px;
+            transition: 0.2s ease-in-out;
+
+            &:hover {
+                background-color: $darkGreen;
+                color: white;
+            }
+        }
+    }
+}
+
+// Hero CSS
+.hero {
+    &-content {
+        background-image: url(../../images/hero.jpg);
+        width: 100%;
+        height: 15.25rem;
+        background-repeat: no-repeat;
+        background-size: 130%;
+        background-position: center top;
+
+        @include breakpoint-up(medium) {
+            height: 31.25rem;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+        }
+    }
+}
+
+// Advantages CSS
+.advantages {
+    // display: flex;
+    // flex-wrap: wrap;
+    // justify-content: space-between;
+    // align-items: center
+    @include breakpoint-up(medium){
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .advantage {
+        margin-bottom: 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        img {
+            width: 70px;
+            height: 70px;
+        }
+
+        .text {
+            margin-left: 20px;
+            h3 {
+                font-size: 16px;
+                margin-top: 20px;
+            }
+
+            p{
+                font-size: 12px;
+            }
+        }
+
+        &:nth-child(2), &:nth-child(4){
+            flex-direction: row-reverse;
+            margin-left: 0;
+            margin-right: 20px ;
+        }
+
+        @include breakpoint-up(medium){
+            flex: 0 0 47%;
+            &:nth-child(2), &:nth-child(4){
+                flex-direction: row;
+                margin-right: 0;
+                margin-left: 20px ;
+            }
+        }
+
+        @include breakpoint-up(large) {
+            display: inline;
+            flex: 1;
+
+            .text {
+                margin: 0;
+            }
+        }
+    }
+}
