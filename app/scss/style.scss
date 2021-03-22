@@ -155,11 +155,11 @@ h1,h2,h3,h4,h5 {
         a {
             font-size: 14px;
             color: $darkGray;
-            margin-right: 12px;
+            margin-right: 16px;
             transition: 0.2s ease-in-out;
 
             &:hover {
-                font-weight: 700;
+                color: $lightGreen;
             }
         }
 

@@ -151,13 +151,13 @@ h1, h2, h3, h4, h5 {
 .header-link a {
   font-size: 14px;
   color: #394241;
-  margin-right: 12px;
+  margin-right: 16px;
   -webkit-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
 }
 
 .header-link a:hover {
-  font-weight: 700;
+  color: #4ca456;
 }
 
 .header-link .login {
